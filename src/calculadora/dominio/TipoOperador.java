@@ -1,11 +1,11 @@
 package calculadora.dominio;
+/**
+ * Enum que lista las posibles operaciones del programa.<br>
+ * SUMA: Realiza una suma.<br>
+ * RESTA: Realiza una resta.<br>
+ * DIVISION: Realiza una división.<br>
+ * MULTIPLICACION: Realiza una multiplicación.<br>
+ */
 public enum TipoOperador {
-	SUMA("+"),RESTA("-"),DIVISION("/"),MULTIPLICACION("*");
-	public final String simbol;
-	public String getSimbol() {
-		return simbol;
-	}
-	TipoOperador(String simbol){
-		this.simbol = simbol;
-	}
+	SUMA,RESTA,DIVISION,MULTIPLICACION;
 }
