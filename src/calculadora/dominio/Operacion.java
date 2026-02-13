@@ -8,17 +8,8 @@ public class Operacion {
 		this.operacion = operacion;
 		this.resultado = resultado;
 	}
-	public int getId() {
-		return id;
-	}
-	public String getOperacion() {
-		return operacion;
-	}
-	public double getResultado() {
-		return resultado;
-	}
 	@Override
 	public String toString() {
-		return String.format("%d.\t%s = %.2f", getId(),getOperacion(), getResultado());
+		return String.format("%d.\t%s = %.2f", id,operacion, resultado);
 	}
 }

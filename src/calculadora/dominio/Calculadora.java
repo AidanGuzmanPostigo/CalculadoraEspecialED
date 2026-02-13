@@ -12,9 +12,6 @@ public class Calculadora {
 	public double getResultadoActual() {
 		return resultadoActual;
 	}
-	public void setResultadoActual(double resultadoActual) {
-		this.resultadoActual = resultadoActual;
-	}
 	public List<Operacion> getOperacionesGuardadas() {
 		return operacionesGuardadas;
 	}
