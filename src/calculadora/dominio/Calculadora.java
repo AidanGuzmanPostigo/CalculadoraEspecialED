@@ -4,7 +4,6 @@ import java.util.List;
 public class Calculadora {
 	private double resultadoActual;
 	private List<Operacion> operacionesGuardadas;
-	private int idOperacion=0;
 	public Calculadora () {
 		operacionesGuardadas = new ArrayList<>();
 		resultadoActual = 0;
@@ -15,8 +14,8 @@ public class Calculadora {
 	public List<Operacion> getOperacionesGuardadas() {
 		return operacionesGuardadas;
 	}
-	public void crearOperacion(String operacion) {
-		this.operacionesGuardadas.add(new Operacion(operacion, ++idOperacion, resultadoActual));
+	private void crearOperacion(String operacion) {
+		this.operacionesGuardadas.add(new Operacion(operacion,resultadoActual));
 	}
 	public void realizarOperacion(List<Double> numeros, List<TipoOperador> operadores, String operacion) {
 		resultadoActual = numeros.get(0);
@@ -24,17 +23,41 @@ public class Calculadora {
 			TipoOperador operador = operadores.get(i);
 			Double numeroActual = numeros.get(i+1);
 			switch (operador) {
-			case SUMA -> resultadoActual+=numeroActual;
-			case RESTA -> resultadoActual-=numeroActual;
-			case DIVISION -> resultadoActual/= numeroActual;
-			case MULTIPLICACION -> resultadoActual *= numeroActual;
+			case SUMA -> suma(numeroActual);
+			case RESTA -> resta(numeroActual);
+			case DIVISION -> division(numeroActual);
+			case MULTIPLICACION -> multiplicacion(numeroActual);
 			}
 		}
 		crearOperacion(operacion);
 	}
+	private void suma(Double numeroActual) {
+		resultadoActual+=numeroActual;
+	}
+	private void resta(Double numeroActual) {
+		resultadoActual-=numeroActual;
+	}
+	private void division(Double numeroActual) {
+		resultadoActual/=numeroActual;
+	}
+	private void multiplicacion(Double numeroActual) {
+		resultadoActual*=numeroActual;
+	}
 	public void reset() {
 		operacionesGuardadas.clear();
 		resultadoActual = 0;
-		idOperacion = 0;
+	}
+	public String list() {
+		StringBuilder s = new StringBuilder("");
+		List<Operacion> resultados = getOperacionesGuardadas();
+		for (int i=0;i< resultados.size();i++) {
+			s.append(String.format("%d\t%s\n", i+1,resultados.get(i).toString()));
+		}
+		if (getOperacionesGuardadas().isEmpty()) {
+			s.append(String.format("No hay operaciones registradas."));
+		}else {
+			s.append(String.format("Resultado actual: %.2f",getResultadoActual()));
+		}
+		return s.toString();
 	}
 }

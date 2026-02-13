@@ -1,6 +1,5 @@
 package calculadora.app;
 import calculadora.dominio.Calculadora;
-import calculadora.dominio.Operacion;
 import calculadora.dominio.ResultadoAnalisis;
 import calculadora.dominio.TipoComando;
 public class GestorCalculadora {
@@ -16,18 +15,11 @@ public class GestorCalculadora {
 	}
 	public void gestionCalculadora() {
 		do {
-			operacion = consola.leerTexto("Introduce una operación");
+			operacion = consola.leerTexto(">");
 			resultadoAnalisis = analizador.analizar(operacion, calculadora.getResultadoActual());
 			switch(resultadoAnalisis.comando()) {
 			case LIST -> {
-				for (Operacion o: calculadora.getOperacionesGuardadas()) {
-					consola.escribirLinea(o.toString());
-				}
-				if (calculadora.getOperacionesGuardadas().isEmpty()) {
-					consola.escribirLinea("No hay operaciones registradas.");
-				}else {
-					consola.escribirLinea("Resultado actual: " + calculadora.getResultadoActual());
-				}
+				consola.escribirLinea(calculadora.list());
 			}
 			case RESET -> {
 				calculadora.reset();
@@ -49,5 +41,6 @@ public class GestorCalculadora {
 			}
 			
 		} while (resultadoAnalisis.comando() != TipoComando.QUIT);
+		consola.cerrar();
 	}
 }
