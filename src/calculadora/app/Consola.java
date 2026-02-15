@@ -27,6 +27,7 @@ public class Consola {
     /**
      * Lee un mensaje introducido por el usuario.
      * @param mensaje Mensaje indicativo al usuario para la entrada de la cadena.
+     * @return Cadena introducida por el usuario.
      */
     public String leerTexto(String mensaje) {
     	String value = "";

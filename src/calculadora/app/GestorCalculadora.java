@@ -2,17 +2,26 @@ package calculadora.app;
 import calculadora.dominio.Calculadora;
 import calculadora.dominio.ResultadoAnalisis;
 import calculadora.dominio.TipoComando;
+/**
+ * Clase donde se crea y gestiona la calculadora.
+ */
 public class GestorCalculadora {
 	private Consola consola;
 	private Calculadora calculadora;
 	private Analizador analizador;
 	private ResultadoAnalisis resultadoAnalisis;
 	private String operacion;
+	/**
+	 * Constructor de la clase, crea una consola, calculadora y un analizador.
+	 */
 	public GestorCalculadora() {
 		consola = new Consola();
 		calculadora = new Calculadora();
 		analizador = new Analizador();
 	}
+	/**
+	 * 	Gestión principal de la calculadora, aquí se leen los datos y, tras los resultados del análisis se llaman a diferentes métodos de la calculadora.
+	 */
 	public void gestionCalculadora() {
 		do {
 			operacion = consola.leerTexto(">");

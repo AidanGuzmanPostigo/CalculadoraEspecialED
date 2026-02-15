@@ -1,22 +1,46 @@
 package calculadora.dominio;
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * Clase que realiza las operaciones del programa.
+ */
 public class Calculadora {
 	private double resultadoActual;
 	private List<Operacion> operacionesGuardadas;
+	/**
+	 * Constructor de la clase, empieza la lista de operaciones y asigna el valor 0 al resultado actual.
+	 */
 	public Calculadora () {
 		operacionesGuardadas = new ArrayList<>();
 		resultadoActual = 0;
 	}
+	/**
+	 * Obtiene el valor del resultado actual.
+	 * @return Resultado actual.
+	 */
 	public double getResultadoActual() {
 		return resultadoActual;
 	}
+	/**
+	 * Obtiene la lista de operaciones guardadas.
+	 * @return Lista de operaciones guardadas.
+	 */
 	public List<Operacion> getOperacionesGuardadas() {
 		return operacionesGuardadas;
 	}
+	/**
+	 * Crea y añade una operación a la lista de operaciones guardadas.
+	 * @param operacion Cadena con la operación introducida por el usuario.
+	 */
 	private void crearOperacion(String operacion) {
 		this.operacionesGuardadas.add(new Operacion(operacion,resultadoActual));
 	}
+	/**
+	 * Realiza las operaciones en base a los operadores pasados por parámetros.
+	 * @param numeros Lista de números usados para las operaciones.
+	 * @param operadores Lista de operadores usados para las operaciones.
+	 * @param operacion Cadena con la operación introducida por el usuario.
+	 */
 	public void realizarOperacion(List<Double> numeros, List<TipoOperador> operadores, String operacion) {
 		resultadoActual = numeros.get(0);
 		for (int i = 0; i< operadores.size(); i++) {
@@ -31,22 +55,45 @@ public class Calculadora {
 		}
 		crearOperacion(operacion);
 	}
+	/**
+	 * Realiza una suma.
+	 * @param numeroActual Número usado para la operación con el resultado inicial.
+	 */
 	private void suma(Double numeroActual) {
 		resultadoActual+=numeroActual;
 	}
+	/**
+	 * Realiza una resta.
+	 * @param numeroActual Número usado para la operación con el resultado inicial.
+	 */
 	private void resta(Double numeroActual) {
 		resultadoActual-=numeroActual;
 	}
+	/**
+	 * Realiza una división.
+	 * @param numeroActual Número usado para la operación con el resultado inicial.
+	 */
 	private void division(Double numeroActual) {
 		resultadoActual/=numeroActual;
 	}
+	/**
+	 * Realiza una multiplicación.
+	 * @param numeroActual Número usado para la operación con el resultado inicial.
+	 */
 	private void multiplicacion(Double numeroActual) {
 		resultadoActual*=numeroActual;
 	}
+	/**
+	 * Resetea la calculadora, limpia la lista de operaciones y pone el resultado a 0.
+	 */
 	public void reset() {
 		operacionesGuardadas.clear();
 		resultadoActual = 0;
 	}
+	/**
+	 * Formatea la lista de operaciones guardadas en formato cadena.
+	 * @return Lista de operaciones guardadas formateada como cadena.
+	 */
 	public String list() {
 		StringBuilder s = new StringBuilder("");
 		List<Operacion> resultados = getOperacionesGuardadas();
