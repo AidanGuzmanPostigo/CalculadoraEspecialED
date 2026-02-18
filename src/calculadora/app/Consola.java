@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * Clase encargada de la entrada y la salida por consola.
  */
-public class Consola {
+public class Consola implements IEntradaSalida {
 	private Scanner sc;
 	/**
      * Constructor por defecto de la clase que inicializa el atributo del Scanner.
@@ -14,6 +14,7 @@ public class Consola {
     /**
      * Cierra el recurso del escáner.
      */
+	@Override
     public void cerrar() {
         this.sc.close();
     }
@@ -21,6 +22,7 @@ public class Consola {
      * Imprime un mensaje y un salto de línea en consola.
      * @param texto Texto a mostrar.
      */
+	@Override
     public void escribirLinea(String texto) {
         System.out.println(texto);
     }
@@ -29,6 +31,7 @@ public class Consola {
      * @param mensaje Mensaje indicativo al usuario para la entrada de la cadena.
      * @return Cadena introducida por el usuario.
      */
+	@Override
     public String leerTexto(String mensaje) {
     	String value = "";
     	escribirLinea(mensaje);

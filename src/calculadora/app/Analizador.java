@@ -10,7 +10,7 @@ import calculadora.dominio.ResultadoAnalisis;
  * Clase encargada de analizar la entrada del usuario.
  * Detecta comandos o interpreta operaciones aritméticas (sin prioridad).
  */
-public class Analizador {
+public class Analizador implements IAnalisis{
 
     private String entrada;
     private List<Double> numeros;

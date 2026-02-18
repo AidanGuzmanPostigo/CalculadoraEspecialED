@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Clase que realiza las operaciones del programa.
  */
-public class Calculadora {
+public class Calculadora implements ICalculadora {
 	private double resultadoActual;
 	private List<Operacion> operacionesGuardadas;
 	/**
@@ -18,6 +18,7 @@ public class Calculadora {
 	 * Obtiene el valor del resultado actual.
 	 * @return Resultado actual.
 	 */
+	@Override
 	public double getResultadoActual() {
 		return resultadoActual;
 	}
@@ -25,6 +26,7 @@ public class Calculadora {
 	 * Obtiene la lista de operaciones guardadas.
 	 * @return Lista de operaciones guardadas.
 	 */
+	@Override
 	public List<Operacion> getOperacionesGuardadas() {
 		return operacionesGuardadas;
 	}
@@ -41,6 +43,7 @@ public class Calculadora {
 	 * @param operadores Lista de operadores usados para las operaciones.
 	 * @param operacion Cadena con la operación introducida por el usuario.
 	 */
+	@Override
 	public void realizarOperacion(List<Double> numeros, List<TipoOperador> operadores, String operacion) {
 		resultadoActual = numeros.get(0);
 		for (int i = 0; i< operadores.size(); i++) {
@@ -86,6 +89,7 @@ public class Calculadora {
 	/**
 	 * Resetea la calculadora, limpia la lista de operaciones y pone el resultado a 0.
 	 */
+	@Override
 	public void reset() {
 		operacionesGuardadas.clear();
 		resultadoActual = 0;
@@ -94,6 +98,7 @@ public class Calculadora {
 	 * Formatea la lista de operaciones guardadas en formato cadena.
 	 * @return Lista de operaciones guardadas formateada como cadena.
 	 */
+	@Override
 	public String list() {
 		StringBuilder s = new StringBuilder("");
 		List<Operacion> resultados = getOperacionesGuardadas();
